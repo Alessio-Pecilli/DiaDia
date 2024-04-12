@@ -135,15 +135,16 @@ public class Stanza {
 	* Controlla se un attrezzo esiste nella stanza (uguaglianza sul nome).
 	* @return true se l'attrezzo esiste nella stanza, false altrimenti.
 	*/
-	public boolean hasAttrezzo(String nomeAttrezzo) {
-		boolean trovato;
-		trovato = false;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
-		}
-		return trovato;
-	}
+    public boolean hasAttrezzo(String nomeAttrezzo) {
+        boolean trovato;
+        trovato = false;
+        for (Attrezzo attrezzo : this.attrezzi) {
+            if (attrezzo != null && attrezzo.getNome().equals(nomeAttrezzo))
+                trovato = true;
+        }
+        return trovato;
+    }
+
 
 	/**
      * Restituisce l'attrezzo nomeAttrezzo se presente nella stanza.
@@ -154,9 +155,12 @@ public class Stanza {
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				attrezzoCercato = attrezzo;
+		for(int i = 0; i < this.attrezzi.length; i++) {
+			if(this.attrezzi[i] != null) {
+				if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
+					attrezzoCercato = this.attrezzi[i];
+				}
+			}
 		}
 		return attrezzoCercato;	
 	}
@@ -167,9 +171,11 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		
+		if(attrezzo == null) {
+			return false;
+		}
 		for(int i = 0;i < attrezzi.length;i++) {
-			if(this.attrezzi[i].getNome().equals(attrezzo.getNome())) {
+			if(this.attrezzi[i] != null && this.attrezzi[i].getNome().equals(attrezzo.getNome())) {
 				this.attrezzi[i] = null;
 				return true;
 			}

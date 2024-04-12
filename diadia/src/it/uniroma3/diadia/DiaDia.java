@@ -73,12 +73,18 @@ public class DiaDia {
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if (comandoDaEseguire.getNome().equals("lista"))
+			this.IOconsole.mostraMessaggio(this.partita.getGiocatore().getBorsa().toString()); 
 		else if(comandoDaEseguire.getNome().equals("prendi")) {
-			Attrezzo a = new Attrezzo(comandoDaEseguire.getParametro(), 100);
+			
+			Attrezzo a = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(comandoDaEseguire.getParametro());
+			
 			this.prendi(a, partita);
+			
 		}
 		else if(comandoDaEseguire.getNome().equals("posa")) {
-			Attrezzo a = new Attrezzo(comandoDaEseguire.getParametro(), 100);
+			Attrezzo a = this.partita.getGiocatore().getBorsa().getAttrezzo(comandoDaEseguire.getParametro());
+			
 			this.posa(a, partita);
 		}
 		else
@@ -148,17 +154,20 @@ public class DiaDia {
 	}
 	
 	private void posa(Attrezzo attrezzo, Partita partita) {
-		Attrezzo x = partita.getGiocatore().getBorsa().removeAttrezzo(attrezzo.getNome());
-		if(x == null) {
-			this.IOconsole.mostraMessaggio("Attrezzo non presente, impossibile rimuoverlo"); 
+		if(attrezzo != null) {
+			Attrezzo x = partita.getGiocatore().getBorsa().removeAttrezzo(attrezzo.getNome());
+			if(x == null) {
+				this.IOconsole.mostraMessaggio("Attrezzo non presente, impossibile rimuoverlo"); 
+			}else {
+				this.IOconsole.mostraMessaggio("Attrezzo rimosso"); 
+			}
+			if(partita.getLabirinto().getStanzaCorrente().addAttrezzo(x)) {
+				
+			}
+			this.IOconsole.mostraMessaggio("Oggetto posato!"); 
 		}else {
-			this.IOconsole.mostraMessaggio("Attrezzo rimosso"); 
+			this.IOconsole.mostraMessaggio("Attrezzo non presente, impossibile rimuoverlo"); 
 		}
-		if(partita.getLabirinto().getStanzaCorrente().addAttrezzo(x)) {
-			
-		}
-		this.IOconsole.mostraMessaggio("Oggetto posato!"); 
-		
 	}
 
 	public static void main(String[] argc) {

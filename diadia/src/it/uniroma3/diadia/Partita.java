@@ -3,6 +3,7 @@ package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.giocatore.Borsa;
 import it.uniroma3.diadia.giocatore.Giocatore;
 
 /**
@@ -25,6 +26,7 @@ public class Partita {
 	private Giocatore giocatore;
 	
 	public Partita(){
+		this.giocatore = new Giocatore(CFU_INIZIALI, new Borsa());
 		this.labirinto = new Labirinto();
 		this.finita = false;
 		this.cfu = CFU_INIZIALI;

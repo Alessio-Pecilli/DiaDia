@@ -14,6 +14,7 @@ public class Labirinto {
 	
 	public Labirinto() {
 		creaStanze();
+		this.stanzaCorrente = entrata;
 		this.entrata = entrata;
 		this.uscita = uscita;
 	}
@@ -76,6 +77,10 @@ public class Labirinto {
 	
 	public Stanza getEntrata() {
 		return entrata;
+	}
+	
+	public void setUscita(Stanza uscita) {
+		this.uscita = uscita;
 	}
 	
 }

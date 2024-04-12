@@ -29,7 +29,7 @@ public class Borsa {
     public Attrezzo getAttrezzo(String nomeAttrezzo) {
         Attrezzo a = null;
         for (int i = 0; i < this.numeroAttrezzi; i++)
-            if (this.attrezzi[i].getNome().equals(nomeAttrezzo))
+            if (this.attrezzi[i] != null && this.attrezzi[i].getNome().equals(nomeAttrezzo))
                 a = attrezzi[i];
 
         return a;
@@ -52,14 +52,14 @@ public class Borsa {
     
     public Attrezzo removeAttrezzo(String nomeAttrezzo) {
         Attrezzo a = null;
-        
-    		
-    		for(int i = 0;i < attrezzi.length;i++) {
-    			if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
-    				a = this.attrezzi[i];
-    				this.attrezzi[i] = null;	
-    			}
-    		}
+
+
+            for(int i = 0;i < attrezzi.length;i++) {
+                if(this.attrezzi[i] != null && this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
+                    a = this.attrezzi[i];
+                    this.attrezzi[i] = null;
+                }
+            }
 
         return a;
     }

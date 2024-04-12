@@ -10,7 +10,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaTest {
 	
-	public Stanza stanza;
+	private Stanza stanza;
 	
 	@Before
 	public void SetUp() {
