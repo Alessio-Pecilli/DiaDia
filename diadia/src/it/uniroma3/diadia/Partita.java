@@ -18,8 +18,6 @@ public class Partita {
 
 	static final private int CFU_INIZIALI = 20;
 
-	private Stanza stanzaCorrente;
-	private Stanza stanzaVincente;
 	private boolean finita;
 	private int cfu;
 	private Labirinto labirinto;
