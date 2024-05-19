@@ -1,10 +1,11 @@
 package diadia;
 
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import it.uniroma3.diadia.ambienti.StanzaMagica;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -13,7 +14,7 @@ public class StanzaMagicaTest {
 
     private StanzaMagica stanzaMagica;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         stanzaMagica = new StanzaMagica("Magica", 3);
     }

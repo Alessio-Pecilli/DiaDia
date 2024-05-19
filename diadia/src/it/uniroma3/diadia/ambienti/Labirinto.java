@@ -10,7 +10,7 @@ public class Labirinto {
 	
 	private Stanza stanzaCorrente;
 	private Giocatore giocatore;
-	
+	private Stanza stanzaVincente;
 	public Labirinto() {
 		creaStanze();
 	}
@@ -78,6 +78,13 @@ public class Labirinto {
 	
 	public void setUscita(Stanza uscita) {
 		this.uscita = uscita;
+	}
+    public Stanza getStanzaVincente() {
+		return stanzaVincente;
+	}
+
+	public void setStanzaVincente(Stanza stanzaVincente) {
+		this.stanzaVincente = stanzaVincente;
 	}
 	
 }

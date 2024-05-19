@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.ambienti;
 
+import java.util.HashSet;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaBloccata extends Stanza{
@@ -17,9 +19,9 @@ public class StanzaBloccata extends Stanza{
 	public Stanza getStanzaAdiacente(String direzione) {
 		// TODO Auto-generated method stub
 		boolean founded = false;
-		Attrezzo[] attrezzi = super.getAttrezzi();
+		HashSet<Attrezzo> attrezzi = super.getAttrezzi();
 		for(Attrezzo a : attrezzi) {
-			if(a.equals(sblocca)){
+			if(a.getNome().equals(sblocca)){
 				founded = true;
 			}
 		}
@@ -33,9 +35,9 @@ public class StanzaBloccata extends Stanza{
 	@Override
 	public String getDescrizione() {
 		boolean founded = false;
-		Attrezzo[] attrezzi = super.getAttrezzi();
+		HashSet<Attrezzo> attrezzi = super.getAttrezzi();
 		for(Attrezzo a : attrezzi) {
-			if(a.equals(sblocca)){
+			if(a.getNome().equals(sblocca)){
 				founded = true;
 			}
 		}

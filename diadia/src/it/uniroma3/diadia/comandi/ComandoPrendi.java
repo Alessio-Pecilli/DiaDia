@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.comandi;
 
+import java.util.HashSet;
+
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
@@ -29,7 +31,7 @@ public class ComandoPrendi implements Comando {
 			}
 		}else {
 			
-			System.out.println("Oggetto non rimosso dalla stanza!");  
+			System.out.println(a + "Oggetto non rimosso dalla stanza!");  
 		}
 
 	}

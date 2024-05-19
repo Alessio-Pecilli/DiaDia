@@ -5,6 +5,8 @@ package it.uniroma3.diadia;
 import java.io.Console;
 import java.util.Scanner;
 
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
@@ -25,6 +27,7 @@ import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 
 public class DiaDia {
 	private IO IOconsole;
+	private Labirinto labirinto;
 
 	static final private String MESSAGGIO_BENVENUTO = ""+
 			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
@@ -44,8 +47,9 @@ public class DiaDia {
 		this.partita = new Partita();
 	}
 	
-	public DiaDia(IO ioConsole) {
+	public DiaDia(Labirinto l, IO ioConsole) {
 		this.partita = new Partita();
+		this.labirinto = l;
 		this.IOconsole = ioConsole;
 	}
 
@@ -158,8 +162,14 @@ public class DiaDia {
 
 	public static void main(String[] argc) {
 		IO io = new IOConsole();
-		DiaDia gioco = new DiaDia(io);
+		Labirinto labirinto = new LabirintoBuilder()
+				.addStanzaIniziale("Atrio")
+				.addAttrezzo("martello", 3)
+				.addStanzaVincente("Biblioteca")
+				.addAdiacenza("Atrio", "Biblioteca", "nord")
+				.getLabirinto();
 		
+		DiaDia gioco = new DiaDia(labirinto, io);
 		gioco.gioca();
 	}
 }

@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.ambienti;
 
+import java.util.HashSet;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class StanzaProtected {
@@ -8,7 +10,7 @@ public class StanzaProtected {
 	static final private int NUMERO_MASSIMO_ATTREZZI = 10;
 	
 	protected String nome;
-	protected Attrezzo[] attrezzi;
+	protected HashSet<Attrezzo> attrezzi;
 	protected int numeroAttrezzi;
 	protected Stanza[] stanzeAdiacenti;
 	protected int numeroStanzeAdiacenti;
@@ -24,7 +26,7 @@ public class StanzaProtected {
         this.numeroAttrezzi = 0;
         this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
         this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
-        this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+        this.attrezzi = new HashSet<Attrezzo>();
     }
 
     /**
@@ -80,7 +82,7 @@ public class StanzaProtected {
      * Restituisce la collezione di attrezzi presenti nella stanza.
      * @return la collezione di attrezzi nella stanza.
      */
-    public Attrezzo[] getAttrezzi() {
+    public HashSet<Attrezzo> getAttrezzi() {
         return this.attrezzi;
     }
 
@@ -91,9 +93,7 @@ public class StanzaProtected {
      */
     public boolean addAttrezzo(Attrezzo attrezzo) {
         if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
-        	this.attrezzi[numeroAttrezzi] = attrezzo;
-        	this.numeroAttrezzi++;
-        	return true;
+        	return attrezzi.add((Attrezzo) attrezzo);
         }
         else {
         	return false;
@@ -145,10 +145,10 @@ public class StanzaProtected {
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
-		for(int i = 0; i < this.attrezzi.length; i++) {
-			if(this.attrezzi[i] != null) {
-				if(this.attrezzi[i].getNome().equals(nomeAttrezzo)) {
-					attrezzoCercato = this.attrezzi[i];
+		for(Attrezzo y : attrezzi) {
+			if(y != null) {
+				if(y.getNome().equals(nomeAttrezzo)) {
+					attrezzoCercato = y;
 				}
 			}
 		}
@@ -161,16 +161,21 @@ public class StanzaProtected {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
+		boolean a;
 		if(attrezzo == null) {
-			return false;
+			a = false;
 		}
-		for(int i = 0;i < attrezzi.length;i++) {
-			if(this.attrezzi[i] != null && this.attrezzi[i].getNome().equals(attrezzo.getNome())) {
-				this.attrezzi[i] = null;
-				return true;
+		for(Attrezzo y : attrezzi) {
+			if(y != null && y.getNome().equals(attrezzo.getNome())) {
+				
+				a = true;;
 			}
 		}
-		return false;
+		a = false;
+		if(a) {
+			attrezzi.remove((Attrezzo) attrezzo);
+		}
+		return a;
 	}
 
 

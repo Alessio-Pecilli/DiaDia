@@ -1,4 +1,6 @@
 package it.uniroma3.diadia.attrezzi;
+import java.util.Iterator;
+
 import it.uniroma3.diadia.ambienti.Stanza;
 
 /**
@@ -11,7 +13,7 @@ import it.uniroma3.diadia.ambienti.Stanza;
  * @see Stanza
  * @version base
  */
-public class Attrezzo {
+public class Attrezzo implements Comparable<Attrezzo>{
 
 	private String nome;
 	private int peso;
@@ -49,5 +51,24 @@ public class Attrezzo {
 	public String toString() {
 		return this.getNome()+" ("+this.getPeso()+"kg)";
 	}
+	
+	public int hashCode() {
+		return this.nome.hashCode();
+	}
+	
+	public boolean equals(Object o) {
+		Attrezzo x = (Attrezzo) o;
+		return (this.nome.equals(x.getNome()));	
+	}
+
+	@Override
+	public int compareTo(Attrezzo o) {
+	        return this.nome.compareTo(o.getNome());
+	}
+	
+
+	
+	
+	
 
 }
