@@ -7,7 +7,7 @@ import java.util.Set;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class ComandoGuarda implements Comando {
+public class ComandoGuarda extends AbstractComando implements Comando {
 
 	@Override
 	public void esegui(Partita partita) {
@@ -63,13 +63,9 @@ public class ComandoGuarda implements Comando {
 	@Override
 	public String getNome() {
 		// TODO Auto-generated method stub
-		return null;
+		return "guarda";
 	}
 
-	@Override
-	public String setNome(String nome) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

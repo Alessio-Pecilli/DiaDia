@@ -8,8 +8,15 @@ public class IOConsole implements IO{
 	
 	public String leggiRiga() {
 		Scanner scannerDiLinee = new Scanner(System.in);
-		String riga = scannerDiLinee.nextLine();
-		//scannerDiLinee.close();
-		return riga;
+		String riga = new String("");
+		try {	
+		riga = scannerDiLinee.nextLine();
+		//scannerDiLinee.close(); 
+		}catch (Exception e) {
+			scannerDiLinee.close();
+		}
+			return riga;
+		
+		
 		}
 	}

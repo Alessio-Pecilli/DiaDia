@@ -9,68 +9,68 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 /**
  * Questa classe modella una partita del gioco
  *
- * @author  docente di POO
+ * @author docente di POO
  * @see Stanza
  * @version base
  */
 
 public class Partita {
 
-	static final private int CFU_INIZIALI = 20;
+    static final private int CFU_INIZIALI = 20;
 
-	private boolean finita;
-	private int cfu;
-	private Labirinto labirinto;
-	private Giocatore giocatore;
-	
-	public Partita(){
-		this.giocatore = new Giocatore(CFU_INIZIALI, new Borsa());
-		this.labirinto = new Labirinto();
-		this.finita = false;
-		this.cfu = CFU_INIZIALI;
-	}
+    private boolean finita;
+    private int cfu;
+    private Labirinto labirinto;
+    private Giocatore giocatore;
 
-	/**
-	 * Restituisce vero se e solo se la partita e' stata vinta
-	 * @return vero se partita vinta
-	 */
-	public boolean vinta() {
-		return this.labirinto.getStanzaCorrente() == this.labirinto.getUscita();
-	}
+    public Partita(Labirinto l) {
+        this.giocatore = new Giocatore(CFU_INIZIALI, new Borsa(DiadiaProperties.getPesoMaxBorsa()));
+        this.finita = false;
+        this.cfu = DiadiaProperties.getNumeroCfuIniziali();
+        this.labirinto = l;
+    }
 
-	/**
-	 * Restituisce vero se e solo se la partita e' finita
-	 * @return vero se partita finita
-	 */
-	public boolean isFinita() {
-		return finita || vinta() || (cfu == 0);
-	}
+    /**
+     * Restituisce vero se e solo se la partita e' stata vinta
+     * @return vero se partita vinta
+     */
+    public boolean vinta() {
+        return this.labirinto.getStanzaCorrente() == this.labirinto.getUscita();
+    }
 
-	/**
-	 * Imposta la partita come finita
-	 *
-	 */
-	public void setFinita() {
-		this.finita = true;
-	}
+    /**
+     * Restituisce vero se e solo se la partita e' finita
+     * @return vero se partita finita
+     */
+    public boolean isFinita() {
+        return finita || vinta() || (cfu == 0);
+    }
 
-	public int getCfu() {
-		return this.cfu;
-	}
+    /**
+     * Imposta la partita come finita
+     *
+     */
+    public void setFinita() {
+        this.finita = true;
+    }
 
-	public void setCfu(int cfu) {
-		this.cfu = cfu;		
-	}	
-	
-	public void setGiocatore(Giocatore giocatore) {
-		this.giocatore = giocatore;
-	}
-	
-	public Giocatore getGiocatore() {
-		return this.giocatore;
-	}
-	
-	public Labirinto getLabirinto() {
-		return labirinto;
-	}
+    public int getCfu() {
+        return this.cfu;
+    }
+
+    public void setCfu(int cfu) {
+        this.cfu = cfu;
+    }   
+
+    public void setGiocatore(Giocatore giocatore) {
+        this.giocatore = giocatore;
+    }
+
+    public Giocatore getGiocatore() {
+        return this.giocatore;
+    }
+
+    public Labirinto getLabirinto() {
+        return labirinto;
+    }
 }

@@ -18,7 +18,7 @@ public class ComandoPosaTest {
     @Before
     public void setUp() {
         // Initialize Partita object for testing
-        partita = new Partita();
+        partita = new Partita(null);
         // Initialize any other objects needed for testing
     }
 

@@ -3,7 +3,7 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 
-public class ComandoVai implements Comando {
+public class ComandoVai extends AbstractComando implements Comando {
 private String direzione;
 
 public ComandoVai(String direzione) {
@@ -39,12 +39,8 @@ public void setParametro(String parametro) {
 @Override
 public String getNome() {
 	// TODO Auto-generated method stub
-	return null;
+	return "Vai";
 }
 
-@Override
-public String setNome(String nome) {
-	// TODO Auto-generated method stub
-	return null;
-}
+
 }

@@ -16,6 +16,5 @@ public void setParametro(String parametro);
 
 public String getNome();
 
-public String setNome(String nome);
 
 }

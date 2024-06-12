@@ -17,7 +17,7 @@ private Labirinto labirinto;
 	
 	@Before
 	public void SetUp() {
-		this.labirinto = new Labirinto();
+		this.labirinto = new Labirinto.LabirintoBuilder().getLabirinto();
 		
 		 Stanza atrio = new Stanza("Atrio");
 	     Stanza biblioteca = new Stanza("Biblioteca");

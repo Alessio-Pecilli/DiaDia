@@ -13,7 +13,7 @@ public class PartitaTest {
     
     @Before
     public void setUp() {
-        this.partita = new Partita();
+        this.partita = new Partita(null);
     }
     
     @Test

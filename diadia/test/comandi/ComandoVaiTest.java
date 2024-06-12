@@ -10,7 +10,7 @@ public class ComandoVaiTest {
 
     @Test
     public void testEseguiSenzaDirezione() {
-        Partita partita = new Partita();
+        Partita partita = new Partita(null);
         partita.getLabirinto().setStanzaCorrente(new Stanza("Stanza A"));
         ComandoVai comandoVai = new ComandoVai(null);
         comandoVai.esegui(partita);

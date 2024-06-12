@@ -6,7 +6,6 @@ import java.io.Console;
 import java.util.Scanner;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.Comando;
@@ -43,12 +42,9 @@ public class DiaDia {
 
 	private Partita partita;
 
-	public DiaDia() {
-		this.partita = new Partita();
-	}
 	
 	public DiaDia(Labirinto l, IO ioConsole) {
-		this.partita = new Partita();
+		this.partita = new Partita(l);
 		this.labirinto = l;
 		this.IOconsole = ioConsole;
 	}
@@ -161,15 +157,17 @@ public class DiaDia {
 	}*/
 
 	public static void main(String[] argc) {
-		IO io = new IOConsole();
-		Labirinto labirinto = new LabirintoBuilder()
-				.addStanzaIniziale("Atrio")
-				.addAttrezzo("martello", 3)
-				.addStanzaVincente("Biblioteca")
-				.addAdiacenza("Atrio", "Biblioteca", "nord")
-				.getLabirinto();
-		
-		DiaDia gioco = new DiaDia(labirinto, io);
-		gioco.gioca();
+	    IO io = new IOConsole();
+
+	    Labirinto labirinto = Labirinto.newBuilder()
+	            .addStanzaIniziale("Atrio")
+	            .addAttrezzo("martello", 3)
+	            .addStanzaVincente("Biblioteca")
+	            .addAdiacenza("Atrio", "Biblioteca", "nord")
+	            .getLabirinto();
+	    
+	    DiaDia gioco = new DiaDia(labirinto, io);
+	    
+	    gioco.gioca();
 	}
 }

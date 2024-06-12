@@ -5,7 +5,7 @@ import java.util.HashSet;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
-public class ComandoPrendi implements Comando {
+public class ComandoPrendi extends AbstractComando implements Comando {
 	
 	String parametro;
 	
@@ -16,6 +16,9 @@ public class ComandoPrendi implements Comando {
 	@Override
 	public void esegui(Partita partita) {
 		System.out.println(parametro);
+		if(this.parametro == null) {
+			System.out.println("Oggetto non specificato!");  
+		}
 		Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(this.parametro);
 	
 		if(a!= null && partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a)) {
@@ -46,14 +49,9 @@ public class ComandoPrendi implements Comando {
 	@Override
 	public String getNome() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Prendi";
 	}
 
 
-	@Override
-	public String setNome(String nome) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

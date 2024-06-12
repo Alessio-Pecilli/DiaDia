@@ -15,24 +15,45 @@ import java.util.Scanner;
  if (scannerDiParole.hasNext())
  parametro = scannerDiParole.next(); // seconda parola: eventuale param.
 
- if (nomeComando == null)
-	 comando = new ComandoNonValido();
-	 else if (nomeComando.equals("vai"))
-	 comando = new ComandoVai(parametro);
-	 else if (nomeComando.equals("prendi"))
-	 comando = new ComandoPrendi(parametro);
-	 else if (nomeComando.equals("posa"))
-	 comando = new ComandoPosa(parametro);
-	 else if (nomeComando.equals("aiuto"))
-	 comando = new ComandoAiuto();
-	 else if (nomeComando.equals("fine"))
-	 comando = new ComandoFine();
-	 else if (nomeComando.equals("guarda"))
-	 comando = new ComandoGuarda();
-	 else comando = new ComandoNonValido();
-	 comando.setParametro(parametro);
-	 return comando;
-	 }
+ Comandi comandoEnum = Comandi.fromString(nomeComando);
+ 
+ switch (comandoEnum) {
+ case VAI:
+     comando = new ComandoVai(parametro);
+     break;
+ case PRENDI:
+     comando = new ComandoPrendi(parametro);
+     break;
+ case POSA:
+     comando = new ComandoPosa(parametro);
+     break;
+ case AIUTO:
+     comando = new ComandoAiuto();
+     break;
+ case FINE:
+     comando = new ComandoFine();
+     break;
+ case GUARDA:
+     comando = new ComandoGuarda();
+     break;
+ case REGALA:
+	 comando = new ComandoRegala(parametro);
+	 break;
+ case INTERAGISCI:
+	 comando = new ComandoInteragisci(parametro);
+	 break;
+ case SALUTA:
+	 comando = new ComandoSaluta();
+	 break;
+ case NON_VALIDO:
+ default:
+     comando = new ComandoNonValido();
+     break;
+}
+
+comando.setParametro(parametro);
+return comando;
+}
 
  
 
